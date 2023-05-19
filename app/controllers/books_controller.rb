@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   def top
+    @users = User.all
   end  
   
   def index
