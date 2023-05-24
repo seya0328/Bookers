@@ -2,15 +2,19 @@
 
 <h4>Title</h4>
 <h4>Body</h4>
- <span>
-    <%= link_to book.title, books(book.id) %>
-  </span>
+ 
 
 <% @books.each do |book| %>
  
- <span><%= book.title %></span>
-<h2>New book</h2>
+<%= book.title %>
+<%= book.body %>
+<%= link_to "show", book_path(@book.id) %>
+<%= link_to "edit", edit_book_path(@book.id) %>
+<%= link_to "destroy", destroy_book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 
+<%end%>
+
+<h2>New book</h2>
 <%= form_with model: Book.new do |f| %>
   <h4>Title</h4>
   <%= f.text_field :title %>
@@ -19,6 +23,7 @@
   <%= f.text_area :body %>
 	
   <%= f.submit '投稿' %>
-
+  
+  
 <% end %>
 
