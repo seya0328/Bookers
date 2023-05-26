@@ -18,9 +18,19 @@
     <td><%= link_to "Destroy", book_path(book.id), method: :delete%></td>
     
   </tr>
-  <% end %>
+  <%end%>
  </tbody>
 </table>
+
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 
 <h2>New book</h2>
 <%= form_with model: Book.new do |f| %>

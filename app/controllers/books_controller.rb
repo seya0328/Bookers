@@ -7,11 +7,12 @@ class BooksController < ApplicationController
    
     @book = Book.new(book_params)
     if @book.save
-      flash[:notice] = "投稿成功"
+      flash[:notice] = "投稿完了"
       redirect_to book_path(@book.id)
     else
-      flash[:alret] = "投稿失敗"
-      
+      flash.now[:alret] = "投稿失敗"
+      @books = Book.all
+      render "index"
 
    end
   end
